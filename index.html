@@ -11,3 +11,28 @@
 
   </body>
 </html>
+<script>
+  const btn = document.getElementById('send-btn');
+  const win = document.getElementById('chat-wind');
+  const input = document.querySelector('input');
+
+  function sendMessage() {
+    if (input.value.trim() !== "") {
+      const msg = document.createElement('p');
+      msg.textContent = "> " + input.value;
+      win.appendChild(msg);
+      input.value = "";
+      win.scrollTop = win.scrollHeight;
+    }
+  }
+
+  // Click the button to send
+  btn.onclick = sendMessage;
+
+  // Press 'Enter' to send (Hacker style)
+  input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  });
+</script>
